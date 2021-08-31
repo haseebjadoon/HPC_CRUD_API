@@ -1,0 +1,31 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="shipId"
+         [value]="service.formData.shipId" />
+  <div class="form-group">
+    <label>Code</label>
+    <input class="form-control form-control-lg" placeholder="Ship Code" name="code"
+           #code="ngModel" [(ngModel)]="service.formData.code" required [class.invalid] ="code.invalid && code.touched"
+           maxlength="12" minlength="12" pattern="[A-Za-zÀ-ÿ]{4}-\d{4}-[A-Za-zÀ-ÿ]\d">
+  </div>
+
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control form-control-lg" placeholder="Ship Name" name="name"
+           #name="ngModel" [(ngModel)]="service.formData.name" required [class.invalid] ="name.invalid && name.touched">
+  </div>
+
+  <div class="form-group">
+    <label>Length</label>
+    <input class="form-control form-control-lg" placeholder="Length of the ship in meters" name="length"
+           #length="ngModel" [(ngModel)]="service.formData.length" required [class.invalid] ="length.invalid && length.touched">
+  </div>
+
+  <div class="form-group">
+    <label>width</label>
+    <input class="form-control form-control-lg" placeholder="Width of the ship in meter" name="width"
+           #width="ngModel" [(ngModel)]="service.formData.width" required [class.invalid] ="width.invalid && width.touched">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>

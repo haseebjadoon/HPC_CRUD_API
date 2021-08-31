@@ -1,0 +1,28 @@
+<h1 id="tableLabel">Ships Information</h1>
+
+<p *ngIf="!ships"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="ships">
+  <thead>
+    <tr>
+      <th>Ship Id</th>
+      <th>Code</th>
+      <th>Ship Name</th>
+      <th>Length</th>
+      <th>Width</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ship of ships">
+      <td>{{ ship.shipId }}</td>
+      <td>{{ ship.code }}</td>
+      <td>{{ ship.name }}</td>
+      <td>{{ ship.length }}</td>
+      <td>{{ ship.width }}</td>
+      <td><i class="fas fa-edit" routerLink="/create-ship" (click)="onEdit(ship)"></i></td>
+      <td><i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(ship.shipId)"></i></td>
+    </tr>
+  </tbody>
+</table>
